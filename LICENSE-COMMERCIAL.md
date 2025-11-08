@@ -6,13 +6,6 @@
 
 **This framework was discovered to benefit humanity.**
 
-Revenue from commercial licensing will be reinvested in:
-- Public infrastructure
-- Healthcare accessibility
-- Education and research
-- Community benefit programs
-- Preventing exploitation of individuals
-
 **Companies that exploit people pay MORE. Companies that help people pay LESS.**
 
 ---
@@ -140,18 +133,7 @@ Companies demonstrating social benefit pay **REDUCED fees**:
 
 ---
 
-### REVENUE REINVESTMENT COMMITMENT
 
-**Adam Lee Hatchett commits to reinvesting commercial licensing revenue in:**
-
-- **40%** - Public infrastructure and community programs
-- **30%** - Healthcare accessibility and affordability initiatives
-- **20%** - Education, research, and open science
-- **10%** - Framework development and maintenance
-
-**Transparency:** Annual reports on revenue and reinvestment will be published.
-
----
 
 ### ATTRIBUTION REQUIREMENTS
 
