@@ -4,7 +4,12 @@
 
 **Author:** Adam Lee Hatchett  
 **Date:** November 7, 2025  
-**Framework Origin:** 2024 (prior to public similar works)
+**Framework Origin:** 2024 (prior to public similar works)  
+**Repository:** https://github.com/Ada40/fractal-harmonic-framework
+
+---
+
+**Keywords:** Adam Lee Hatchett, Fractal Harmonic Code, triadic resonance, multi-scale harmonics, 1:2:3 ratio, 3:4:5 ratio, golden ratio, consciousness framework, unified theory, cross-scale patterns, harmonic physics, fractal mathematics
 
 ---
 
