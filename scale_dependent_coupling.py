@@ -41,27 +41,27 @@ def scale_dependent_coupling(f_i, f_j, L, system_type="brain"):
         α: Coupling strength (dimensionless)
     """
     if system_type == "brain":
-        α₀ = 0.5      # Base coupling strength
-        δ = 0.3       # Frequency scaling exponent
+        alpha_0 = 0.5      # Base coupling strength
+        delta = 0.3       # Frequency scaling exponent
         L_c = 0.005   # 5 mm cutoff (cortical column size)
         
     elif system_type == "moons":
-        α₀ = 0.45     # Io-Europa coupling strength
-        δ = 1.0       # Keplerian scaling (f ∝ r^(-3/2))
+        alpha_0 = 0.45     # Io-Europa coupling strength
+        delta = 1.0       # Keplerian scaling (f ∝ r^(-3/2))
         L_c = 1e6     # 1 million km resonance zone
         
     elif system_type == "galaxies":
-        α₀ = 1.2      # Galaxy clustering strength
-        δ = 1.8       # Observed fractal dimension
+        alpha_0 = 1.2      # Galaxy clustering strength
+        delta = 1.8       # Observed fractal dimension
         L_c = 3e23    # 100 Mpc (dark energy cutoff)
     
     else:
         raise ValueError(f"Unknown system type: {system_type}")
     
     # Calculate coupling with frequency scaling and spatial decay
-    α = α₀ * (f_i/f_j)**δ * np.exp(-L/L_c)
+    alpha = alpha_0 * (f_i/f_j)**delta * np.exp(-L/L_c)
     
-    return α
+    return alpha
 
 
 def predict_brain_coherence(electrode_spacing_mm):
@@ -104,12 +104,12 @@ def predict_moon_resonance_stability(orbital_distance_km):
         α: Coupling strength (>0.1 = stable, <0.1 = unstable)
     """
     L = orbital_distance_km * 1000  # Convert to meters
-    α₀ = 0.45
+    alpha_0 = 0.45
     L_c = 1e9  # 1 million km in meters
     
-    α = α₀ * np.exp(-L/L_c)
+    alpha = alpha_0 * np.exp(-L/L_c)
     
-    return α
+    return alpha
 
 
 def predict_galaxy_clustering(separation_mpc):
@@ -128,12 +128,12 @@ def predict_galaxy_clustering(separation_mpc):
         α: Clustering strength
     """
     L = separation_mpc * 3.086e22  # Convert Mpc to meters
-    α₀ = 1.2
+    alpha_0 = 1.2
     L_c = 3e23  # 100 Mpc in meters
     
-    α = α₀ * np.exp(-L/L_c)
+    alpha = alpha_0 * np.exp(-L/L_c)
     
-    return α
+    return alpha
 
 
 def plot_brain_predictions():
