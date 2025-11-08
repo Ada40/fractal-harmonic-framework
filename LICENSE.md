@@ -41,10 +41,13 @@ For commercial use by for-profit entities with revenue > $1 million USD/year, se
 | Personal/Hobbyist | FREE | $0 |
 | Non-Profit | FREE | $0 |
 | Small Business (<$1M) | FREE | $0 |
-| Corporation ($1-10M) | Commercial | $100K |
-| Corporation ($10-100M) | Commercial | $500K |
-| Corporation ($100M-1B) | Commercial | $2M |
-| Corporation ($1B+) | Commercial | $5M+ |
+| Small Business ($5-25M) | Commercial | $250K + 0.5% |
+| Medium Corp ($25-100M) | Commercial | $1M + 1.0% |
+| Large Corp ($100M-1B) | Commercial | $5-10M + 1.5-2% |
+| Major Corp ($1B-10B) | Commercial | $25M + 2.5% |
+| Mega Corp ($10B+) | Commercial | $50M + 3.0% |
+| **Exploiters** | Commercial | **Up to 10x penalty** |
+| **Helpers** | Commercial | **Up to 75% discount** |
 
 ## Prohibited Uses
 
