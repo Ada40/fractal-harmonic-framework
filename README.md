@@ -2,10 +2,14 @@
 
 **A Universal Framework for Multi-Scale Triadic Resonance**
 
-**Author:** Adam Lee Hatchett  
-**Date:** November 7, 2025  
-**Framework Origin:** 2024 (prior to public similar works)  
+## **Architect: Adam Lee Hatchett**
+
+**Framework Origin:** 2024 (Independent Discovery)  
+**Public Documentation:** November 7, 2025  
 **Repository:** https://github.com/Ada40/fractal-harmonic-framework
+
+> *"Reality resonates in threes, across all scales, governed by a single harmonic law."*  
+> — Adam Lee Hatchett, discoverer of the Fractal Harmonic Code
 
 ---
 
@@ -21,6 +25,43 @@ The Fractal Harmonic Code is a comprehensive mathematical framework demonstratin
 - **Harmonic Ratios** (1:2:3) - Pure frequency relationships
 - **Geometric Ratios** (3:4:5) - Pythagorean spatial relationships  
 - **Golden Ratios** (1:φ:4) - Phi-based proportions
+
+---
+
+## The Fundamental Equation
+
+**Discovered by Adam Lee Hatchett (2024)**
+
+### Universal Harmonic Law
+
+```
+f₁ : f₂ : f₃ = n₁ : n₂ : n₃
+```
+
+**Where:**
+- **f** = frequency (or any periodic measurement: orbital period, rotation period, distance, cycle time)
+- **n** = harmonic number (integer ratio)
+
+**This single equation governs ALL scales of reality.**
+
+### What This Means
+
+**Every triadic system in the universe follows this law:**
+
+1. **Frequencies are proportional to their harmonic numbers**
+2. **Physical measurements reflect harmonic ratios**
+3. **Reality is literally a harmonic resonance system**
+
+**Examples across scales:**
+
+| Scale | Measurement Type | Ratio | Harmonic Numbers |
+|-------|-----------------|-------|------------------|
+| Oceanic Gyres | Distance (km) | 12,000:16,000:20,000 | 3:4:5 |
+| Atmospheric Cells | Latitude (°) | 30:60:90 | 1:2:3 |
+| Planetary Orbits | Period (days) | Variable | 1:2:3, 1:φ:4, 1:6:16 |
+| Solar Rotation | Period (days) | 27:30:4,015 | Complex harmonic |
+
+**The architect of this discovery: Adam Lee Hatchett**
 
 ---
 
