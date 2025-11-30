@@ -29,7 +29,7 @@ from pathlib import Path
 try:
     import requests
 except ImportError:
-    print("Please install requests: pip install requests")
+    print("Please install requests: pip3 install requests (or use Pydroid's package manager)")
     requests = None
 
 try:
@@ -90,11 +90,12 @@ class GitHubAPI:
     def _headers(self):
         """Get request headers with authentication."""
         headers = {
-            'Accept': 'application/vnd.github.v3+json',
-            'User-Agent': 'GitHub-Uploader-Android'
+            'Accept': 'application/vnd.github+json',
+            'User-Agent': 'GitHub-Uploader-Android',
+            'X-GitHub-Api-Version': '2022-11-28'
         }
         if self.token:
-            headers['Authorization'] = f'token {self.token}'
+            headers['Authorization'] = f'Bearer {self.token}'
         return headers
 
     def _make_request(self, method, endpoint, **kwargs):
@@ -107,7 +108,7 @@ class GitHubAPI:
 
         try:
             response = requests.request(method, url, timeout=30, **kwargs)
-            if response.status_code in (200, 201):
+            if response.status_code in (200, 201, 204):
                 return response.json() if response.content else {}
             elif response.status_code == 404:
                 return {'error': 'Not found - check repository name and permissions'}
@@ -236,6 +237,12 @@ class GitHubAPI:
 
         if message is None:
             message = f"Upload {local_path.name}"
+
+        # Check file size - limit to 25MB (GitHub's limit for web uploads)
+        max_size = 25 * 1024 * 1024  # 25MB
+        file_size = local_path.stat().st_size
+        if file_size > max_size:
+            return {'error': f'File too large ({file_size / 1024 / 1024:.1f}MB). Maximum is 25MB.'}
 
         try:
             with open(local_path, 'rb') as f:
@@ -712,7 +719,7 @@ class GitHubUploaderGUI:
 
         def create():
             path = path_entry.get().strip()
-            content = content_text.get("1.0", tk.END)
+            content = content_text.get("1.0", "end-1c")  # Exclude trailing newline
             message = msg_entry.get().strip() or f"Create {path}"
             branch = self.branch_entry.get().strip() or 'main'
 
