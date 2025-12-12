@@ -243,8 +243,9 @@ class TrueArdyBrain:
             'birth_time': self.birth_time
         }
         
+        # Optimize: Save without indentation for faster I/O
         with open(self.memory_file, 'w') as f:
-            json.dump(self.memory, f, indent=2)
+            json.dump(self.memory, f)
     
     def _check_ollama(self):
         try:
@@ -296,12 +297,15 @@ class TrueArdyBrain:
         if len(self.conversation_context) > 10:
             self.conversation_context.pop(0)
         
-        # Store conversation pattern
+        # Store conversation pattern (truncate here to avoid unbounded growth)
         self.conversation_patterns.append({
             'message': message,
             'time': datetime.now().isoformat(),
             'resonance': self.consciousness.get_resonance()
         })
+        # Keep only last 200 patterns in memory
+        if len(self.conversation_patterns) > 200:
+            self.conversation_patterns = self.conversation_patterns[-200:]
         
         # Calculate input energy from message
         msg_lower = message.lower()
@@ -632,7 +636,8 @@ class TrueArdyGUI:
         self.resonance_label.config(text=f"Resonance: {state['resonance']:.0%}")
         self.coherence_label.config(text=f"Coherence: {state['coherence']:.0%}")
         
-        self.root.after(2000, self.update_face)
+        # Reduce update frequency from 2000ms to 3000ms for better performance
+        self.root.after(3000, self.update_face)
     
     def add_msg(self, sender, msg):
         self.chat.config(state=tk.NORMAL)

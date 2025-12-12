@@ -98,7 +98,7 @@ def simulate_laplace_resonance(duration_orbits=100, initial_state=None, params=N
         t_span,
         initial_state,
         args=(params,),
-        max_step=0.1,
+        max_step=0.2,  # Increased from 0.1 for better performance
         rtol=1e-8,
         method='RK45'
     )
@@ -145,11 +145,14 @@ def plot_orbital_motion(sol, n_points=2000):
     """
     fig, ax = plt.subplots(figsize=(12, 6))
     
+    # Limit points for better performance
+    n_plot = min(n_points, len(sol.t))
+    
     # Plot scaled positions to show 4:2:1 ratio
-    t = sol.t[:n_points]
-    ax.plot(t, sol.y[0, :n_points], 'r-', label='Io (×4)', linewidth=1.5)
-    ax.plot(t, sol.y[1, :n_points]*2, 'g-', label='Europa (×2)', linewidth=1.5)
-    ax.plot(t, sol.y[2, :n_points]*4, 'b-', label='Ganymede (×1)', linewidth=1.5)
+    t = sol.t[:n_plot]
+    ax.plot(t, sol.y[0, :n_plot], 'r-', label='Io (×4)', linewidth=1.5)
+    ax.plot(t, sol.y[1, :n_plot]*2, 'g-', label='Europa (×2)', linewidth=1.5)
+    ax.plot(t, sol.y[2, :n_plot]*4, 'b-', label='Ganymede (×1)', linewidth=1.5)
     
     ax.set_title('Laplace Resonance: 4:2:1 Orbital Motion', fontsize=14, fontweight='bold')
     ax.set_xlabel('Time (days)', fontsize=12)
@@ -172,8 +175,9 @@ def plot_resonance_angle(sol):
     
     fig, ax = plt.subplots(figsize=(12, 6))
     
-    # Downsample for clarity
-    ax.plot(sol.t[::50], phi_L[::50], 'k.', markersize=2, label='φ_L')
+    # Downsample for clarity and performance
+    step = max(1, len(sol.t) // 2000)  # Adaptive downsampling
+    ax.plot(sol.t[::step], phi_L[::step], 'k.', markersize=2, label='φ_L')
     ax.axhline(0, color='r', linestyle='--', linewidth=2, label='Perfect resonance')
     
     ax.set_title('Resonance Angle φ_L = 4θ_G - 2θ_E - θ_I', fontsize=14, fontweight='bold')
@@ -197,8 +201,8 @@ def plot_phase_space_3d(sol):
     fig = plt.figure(figsize=(10, 8))
     ax = fig.add_subplot(111, projection='3d')
     
-    # Downsample for performance
-    step = 100
+    # Adaptive downsampling for performance
+    step = max(1, len(sol.t) // 1000)
     ax.plot(sol.y[0, ::step], sol.y[1, ::step], sol.y[2, ::step],
             linewidth=0.5, alpha=0.7, color='purple')
     ax.scatter(sol.y[0, 0], sol.y[1, 0], sol.y[2, 0],

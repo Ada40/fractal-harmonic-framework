@@ -99,7 +99,8 @@ def fractal_brain_with_noise(t, A, params, noise1, noise2, noise3):
     g1, g2, g3, a12, a13, a21, a23, a31, a32, b1, b2, b3, s1, s2, s3 = params
     
     # Get fractal noise at this time index (1000 Hz sampling)
-    idx = int(t * 1000) % len(noise1)
+    # Use min to avoid index overflow instead of expensive modulo
+    idx = min(int(t * 1000), len(noise1) - 1)
     
     # Triadic coupled oscillator equations with fractal noise
     dA1 = -g1*A1 + a12*A2 + a13*A3 + b1*A2*A3 + s1*noise1[idx]
@@ -138,7 +139,7 @@ def simulate_brain(duration=2.0, initial_state=[1, 1, 1], params=None):
         t_span, 
         initial_state, 
         args=(params,), 
-        max_step=0.001,
+        max_step=0.01,  # Increased from 0.001 for better performance
         method='RK45'
     )
     
@@ -185,7 +186,7 @@ def simulate_brain_fractal(duration=2.0, initial_state=[1.0, 0.5, 0.2], params=N
         t_span,
         initial_state,
         t_eval=t_eval,
-        max_step=0.001,
+        max_step=0.01,  # Increased from 0.001 for better performance
         method='RK45'
     )
     
@@ -288,9 +289,11 @@ def plot_power_spectrum(sol, sampling_rate=1000):
         plt: Matplotlib pyplot object
     """
     # Calculate power spectral density using Welch's method
-    f1, P1 = welch(sol.y[0], fs=sampling_rate, nperseg=256)
-    f2, P2 = welch(sol.y[1], fs=sampling_rate, nperseg=256)
-    f3, P3 = welch(sol.y[2], fs=sampling_rate, nperseg=256)
+    # Increased nperseg for better performance with longer signals
+    nperseg_size = min(512, len(sol.y[0]) // 4)
+    f1, P1 = welch(sol.y[0], fs=sampling_rate, nperseg=nperseg_size)
+    f2, P2 = welch(sol.y[1], fs=sampling_rate, nperseg=nperseg_size)
+    f3, P3 = welch(sol.y[2], fs=sampling_rate, nperseg=nperseg_size)
     
     plt.figure(figsize=(12, 6))
     
