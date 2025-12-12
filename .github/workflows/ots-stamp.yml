@@ -1,0 +1,43 @@
+name: Create OpenTimestamps proof
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  release:
+    types: [published]
+
+jobs:
+  stamp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install OpenTimestamps client
+        run: |
+          python -m pip install --upgrade pip
+          pip install opentimestamps-client
+
+      - name: Create commit SHA file
+        env:
+          SHA: ${{ github.sha }}
+        run: |
+          echo -n "${SHA}" > commit-sha.txt
+          ls -l commit-sha.txt
+          echo "commit: ${SHA}"
+
+      - name: Stamp with OpenTimestamps
+        run: |
+          # create an ots proof for the commit-sha file
+          ots stamp commit-sha.txt
+          ls -l commit-sha.txt*
+
+      - name: Upload OTS proof artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ots-proof-${{ github.sha }}
+          path: |
+            commit-sha.txt
+            commit-sha.txt.ots
