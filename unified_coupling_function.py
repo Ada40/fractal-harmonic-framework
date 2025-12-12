@@ -243,8 +243,12 @@ def plot_unified_coupling():
     M_jupiter = 1.9e27
     a_io = 4.2e8
     a_europa = 6.7e8
-    alpha_o = [alpha_orbital(m_io, m_europa, M_jupiter, a_io, a_europa, L) 
-               for L in L_orbital]
+    # Vectorized calculation
+    base_strength = (m_europa / M_jupiter) * (a_io / a_europa)**3
+    L_c = 1e9
+    spatial_decay = np.exp(-L_orbital / L_c)
+    resonance_amplification = 1e5
+    alpha_o = base_strength * spatial_decay * resonance_amplification
     ax3.plot(L_orbital / 1e6, alpha_o, 'orange', linewidth=2)
     ax3.axvline(1000, color='gray', linestyle='--', label='Resonance zone = 1 Mkm')
     ax3.axhline(0.1, color='red', linestyle='--', label='Stability threshold')
@@ -259,8 +263,14 @@ def plot_unified_coupling():
     L_galactic = np.linspace(1e22, 5e23, 100)  # 3 to 150 Mpc
     M_galaxy = 1e42  # kg
     r_galaxy = 1e22  # meters
-    alpha_g = [alpha_galactic(M_galaxy, M_galaxy, r_galaxy, r_galaxy, L) 
-               for L in L_galactic]
+    # Vectorized calculation
+    M_total = 2 * M_galaxy
+    base_strength = M_galaxy / M_total
+    delta = 1.8
+    frequency_scaling = 1.0  # r_i/r_j = 1 for equal distances
+    L_c = 3e23
+    spatial_decay = np.exp(-L_galactic / L_c)
+    alpha_g = base_strength * frequency_scaling * spatial_decay
     ax4.plot(L_galactic / 3.086e22, alpha_g, 'purple', linewidth=2)
     ax4.axvline(100, color='gray', linestyle='--', label='Dark energy scale = 100 Mpc')
     ax4.set_xlabel('Separation (Mpc)', fontsize=11)

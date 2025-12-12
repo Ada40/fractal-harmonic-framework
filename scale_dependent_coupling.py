@@ -75,17 +75,19 @@ def predict_brain_coherence(electrode_spacing_mm):
     
     Args:
         electrode_spacing_mm: Distance between electrodes (millimeters)
+                             Can be scalar or numpy array
     
     Returns:
         coherence: Predicted coherence (0 to 1)
     """
-    L = electrode_spacing_mm / 1000  # Convert to meters
+    L = np.atleast_1d(electrode_spacing_mm) / 1000  # Convert to meters
     L_c = 0.005  # 5 mm cutoff
     
     # Coherence decays exponentially with distance
     coherence = np.exp(-L/L_c)
     
-    return coherence
+    # Return scalar if input was scalar
+    return coherence.item() if np.isscalar(electrode_spacing_mm) else coherence
 
 
 def predict_moon_resonance_stability(orbital_distance_km):
@@ -99,17 +101,19 @@ def predict_moon_resonance_stability(orbital_distance_km):
     
     Args:
         orbital_distance_km: Distance from Jupiter (kilometers)
+                            Can be scalar or numpy array
     
     Returns:
         α: Coupling strength (>0.1 = stable, <0.1 = unstable)
     """
-    L = orbital_distance_km * 1000  # Convert to meters
+    L = np.atleast_1d(orbital_distance_km) * 1000  # Convert to meters
     alpha_0 = 0.45
     L_c = 1e9  # 1 million km in meters
     
     alpha = alpha_0 * np.exp(-L/L_c)
     
-    return alpha
+    # Return scalar if input was scalar
+    return alpha.item() if np.isscalar(orbital_distance_km) else alpha
 
 
 def predict_galaxy_clustering(separation_mpc):
@@ -123,32 +127,34 @@ def predict_galaxy_clustering(separation_mpc):
     
     Args:
         separation_mpc: Distance between galaxies (megaparsecs)
+                       Can be scalar or numpy array
     
     Returns:
         α: Clustering strength
     """
-    L = separation_mpc * 3.086e22  # Convert Mpc to meters
+    L = np.atleast_1d(separation_mpc) * 3.086e22  # Convert Mpc to meters
     alpha_0 = 1.2
     L_c = 3e23  # 100 Mpc in meters
     
     alpha = alpha_0 * np.exp(-L/L_c)
     
-    return alpha
+    # Return scalar if input was scalar
+    return alpha.item() if np.isscalar(separation_mpc) else alpha
 
 
 def plot_brain_predictions():
     """Plot brain coherence vs electrode spacing."""
     spacings = np.linspace(0, 20, 100)  # 0 to 20 mm
-    coherences = [predict_brain_coherence(s) for s in spacings]
+    # Vectorized calculation instead of list comprehension
+    coherences = predict_brain_coherence(spacings)
     
     plt.figure(figsize=(10, 6))
     plt.plot(spacings, coherences, 'b-', linewidth=2, label='Predicted coherence')
     
     # Mark specific predictions
-    plt.scatter([2, 5, 10], 
-                [predict_brain_coherence(2), 
-                 predict_brain_coherence(5), 
-                 predict_brain_coherence(10)],
+    test_spacings = np.array([2, 5, 10])
+    test_coherences = predict_brain_coherence(test_spacings)
+    plt.scatter(test_spacings, test_coherences,
                 color='red', s=100, zorder=5, label='Testable predictions')
     
     # Mark cutoff length
@@ -168,7 +174,8 @@ def plot_brain_predictions():
 def plot_moon_predictions():
     """Plot moon resonance stability vs orbital distance."""
     distances = np.linspace(400000, 3000000, 100)  # 400k to 3M km
-    alphas = [predict_moon_resonance_stability(d) for d in distances]
+    # Vectorized calculation
+    alphas = predict_moon_resonance_stability(distances)
     
     plt.figure(figsize=(10, 6))
     plt.plot(distances/1e6, alphas, 'g-', linewidth=2, label='Coupling strength α')
@@ -204,14 +211,15 @@ def plot_moon_predictions():
 def plot_galaxy_predictions():
     """Plot galaxy clustering vs separation scale."""
     separations = np.linspace(1, 300, 100)  # 1 to 300 Mpc
-    alphas = [predict_galaxy_clustering(s) for s in separations]
+    # Vectorized calculation
+    alphas = predict_galaxy_clustering(separations)
     
     plt.figure(figsize=(10, 6))
     plt.plot(separations, alphas, 'purple', linewidth=2, label='Clustering strength α')
     
     # Mark specific predictions
-    test_scales = [30, 100, 200]
-    test_alphas = [predict_galaxy_clustering(s) for s in test_scales]
+    test_scales = np.array([30, 100, 200])
+    test_alphas = predict_galaxy_clustering(test_scales)
     plt.scatter(test_scales, test_alphas, color='red', s=100, zorder=5, 
                 label='Testable predictions')
     

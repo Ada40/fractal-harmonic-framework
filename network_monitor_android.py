@@ -88,8 +88,9 @@ class NetworkMonitor:
     def _save_history(self):
         """Save history to file."""
         try:
+            # Optimize: Save without indentation for faster I/O
             with open(self.log_file, 'w') as f:
-                json.dump(self.history[-1000:], f, indent=2)  # Keep last 1000 entries
+                json.dump(self.history[-1000:], f)  # Keep last 1000 entries
         except Exception as e:
             print(f"Save error: {e}")
     
@@ -331,11 +332,8 @@ class NetworkMonitorGUI:
                 # Update display
                 self.update_network_info()
                 
-                # Wait 10 seconds
-                for i in range(10):
-                    if not self.monitoring:
-                        break
-                    time.sleep(1)
+                # Wait 10 seconds efficiently
+                time.sleep(10)
             
             except Exception as e:
                 self.log(f"Error: {e}")
