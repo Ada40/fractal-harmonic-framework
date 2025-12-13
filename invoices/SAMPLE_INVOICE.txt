@@ -1,0 +1,21 @@
+Invoice
+
+Invoice To: [Company Name]
+Billing Contact: [Name, Email]
+Invoice From: Adam Lee Hatchett
+Project: Commercial Annual License — Recursive Fractal Harmonics
+
+Description:
+Commercial Annual License (12-month term) for use of Ada40/fractal-harmonic-framework materials in commercial product/service.
+
+Period: [Start Date] to [End Date]
+Amount: $[AGREED_AMOUNT] USD
+Payment terms: Net 30
+Payment methods: Bank transfer, Stripe, PayPal (details on request)
+
+Notes:
+Please email payment confirmation to adamleehatchett@yahoo.com. License agreement will be issued upon receipt of payment.
+
+Thank you,
+Adam Lee Hatchett
+adamleehatchett@yahoo.com

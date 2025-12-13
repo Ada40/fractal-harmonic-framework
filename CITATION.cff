@@ -1,21 +1,16 @@
 cff-version: 1.2.0
-message: "If you use this framework, please cite it as below."
+message: "If you use this software, data, or materials in your teaching or research, please cite as below."
+title: "Recursive Fractal Harmonics"
+version: "v1.0"
+date-released: "2025-12-13"
 authors:
   - family-names: "Hatchett"
     given-names: "Adam Lee"
-title: "The Fractal Harmonic Code: A Universal Framework for Multi-Scale Triadic Resonance"
-version: 1.0.0
-date-released: 2025-11-07
-url: "https://github.com/Ada40/fractal-harmonic-framework"
-abstract: "A comprehensive mathematical framework demonstrating that reality operates through nested triadic harmonic ratios across all scales - from galactic structures to terrestrial ocean currents. The framework identifies three fundamental ratio types (1:2:3 harmonic, 3:4:5 geometric, 1:φ:4 golden) that repeat fractally across 20+ orders of magnitude."
-keywords:
-  - fractal harmonics
-  - triadic resonance
-  - multi-scale patterns
-  - harmonic ratios
-  - consciousness framework
-  - Adam Lee Hatchett
-  - unified theory
-  - cross-scale synthesis
-license: CC-BY-4.0
-repository-code: "https://github.com/Ada40/fractal-harmonic-framework"
+    affiliation: "Independent researcher"
+preferred-citation:
+  type: "software"
+  title: "Recursive Fractal Harmonics"
+  authors:
+    - "Adam Lee Hatchett"
+  year: 2025
+  url: "https://github.com/Ada40/fractal-harmonic-framework"
