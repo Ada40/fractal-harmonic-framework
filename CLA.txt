@@ -1,0 +1,23 @@
+Contributor License Agreement (CLA) — Simple Individual CLA
+
+This Contributor License Agreement ("Agreement") is between the individual contributor ("You")
+and the project maintainer ("Project Maintainer"): Adam Lee Hatchett.
+
+By signing this CLA you grant to the Project Maintainer a worldwide, non-exclusive, perpetual,
+royalty-free, transferable license to use, reproduce, prepare derivative works of, publicly display,
+perform, sublicense, and distribute your contributions in any form and for any purpose, including
+commercial re-licensing, subject to the following:
+
+1. You retain copyright to your contributions.
+2. You warrant that your contributions are your original work and you have the right to grant this license.
+3. You grant the Project Maintainer the right to re-license your contributions under commercial terms
+   and include them in releases licensed under the project's Commercial License.
+4. The Project Maintainer agrees to give clear attribution to contributors in AUTHORS.md or releases.
+5. This CLA does not require assignment of copyright; it grants a broad license to enable project stewardship.
+
+Signed by:
+Name: ______________________
+Email: ______________________
+Date: ______________________
+
+Please send a scanned copy or digital signature to adamleehatchett@yahoo.com.

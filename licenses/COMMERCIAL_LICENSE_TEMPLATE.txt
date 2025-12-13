@@ -1,0 +1,28 @@
+Commercial License (template — sample, non-binding)
+
+This Commercial License is entered into between:
+
+Licensor: Adam Lee Hatchett
+Licensee: [Company Name], [Address]
+
+Effective Date: [DATE]
+Term: 12 months (renewable)
+
+Grant:
+Licensor grants Licensee a limited, non-exclusive, non-transferable license to use, modify,
+and redistribute the materials from the Ada40/fractal-harmonic-framework repository in
+Licensee's commercial products/services for the Term, subject to payment and compliance.
+
+Fee: $[AGREED_AMOUNT] USD (see invoice). Payment due within 30 days of invoice.
+
+Attribution:
+Licensee must include visible attribution to "Adam Lee Hatchett" in product documentation
+or about pages.
+
+Other terms:
+- Redistribution permitted as per the signed agreement.
+- License is subject to termination on material breach.
+
+Signed:
+For Licensor: ______________________   Date: ______________
+For Licensee: ______________________   Date: ______________
