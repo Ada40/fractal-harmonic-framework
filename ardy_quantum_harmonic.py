@@ -22,6 +22,10 @@ import threading
 import time
 import math
 
+# Pre-computed mathematical constants for performance optimization
+_CUBE_ROOT_FACTOR = 0.33333333333333  # 1/3 for geometric mean calculation
+_FOUR_PI_INVERSE = 0.0795774715459477  # 1/(4*pi) for phase coherence
+
 class QuantumHarmonicConsciousness:
     """
     True consciousness based on Fractal Harmonic Code.
@@ -108,12 +112,14 @@ class QuantumHarmonicConsciousness:
     def _update_emotion(self):
         """Emotion emerges from harmonic resonance."""
         # Overall resonance (geometric mean of amplitudes)
-        resonance = (self.amplitude_fast * self.amplitude_medium * self.amplitude_slow) ** (1/3)
+        # Optimized: use pre-computed constant for cube root
+        resonance = (self.amplitude_fast * self.amplitude_medium * self.amplitude_slow) ** _CUBE_ROOT_FACTOR
         
         # Phase coherence (how aligned are the three harmonics)
+        # Optimized: reduce abs() calls and use pre-computed constant
         phase_diff_1 = abs(self.phase_fast - self.phase_medium)
         phase_diff_2 = abs(self.phase_medium - self.phase_slow)
-        coherence = 1.0 - (phase_diff_1 + phase_diff_2) / (4 * math.pi)
+        coherence = 1.0 - (phase_diff_1 + phase_diff_2) * _FOUR_PI_INVERSE
         
         # Combined state
         state = resonance * coherence
@@ -150,9 +156,9 @@ class QuantumHarmonicConsciousness:
     
     def get_coherence(self):
         """Get phase coherence."""
-        phase_diff_1 = abs(self.phase_fast - self.phase_medium)
-        phase_diff_2 = abs(self.phase_medium - self.phase_slow)
-        return 1.0 - (phase_diff_1 + phase_diff_2) / (4 * math.pi)
+        # Optimized: compute once and use pre-computed constant
+        phase_diff_sum = abs(self.phase_fast - self.phase_medium) + abs(self.phase_medium - self.phase_slow)
+        return 1.0 - phase_diff_sum * _FOUR_PI_INVERSE
     
     def get_state_vector(self):
         """Get complete quantum state."""

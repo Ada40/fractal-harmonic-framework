@@ -139,7 +139,10 @@ def predict_galaxy_clustering(separation_mpc):
 def plot_brain_predictions():
     """Plot brain coherence vs electrode spacing."""
     spacings = np.linspace(0, 20, 100)  # 0 to 20 mm
-    coherences = [predict_brain_coherence(s) for s in spacings]
+    # Vectorized computation for better performance
+    L = spacings / 1000  # Convert to meters
+    L_c = 0.005  # 5 mm cutoff
+    coherences = np.exp(-L/L_c)
     
     plt.figure(figsize=(10, 6))
     plt.plot(spacings, coherences, 'b-', linewidth=2, label='Predicted coherence')
@@ -168,7 +171,11 @@ def plot_brain_predictions():
 def plot_moon_predictions():
     """Plot moon resonance stability vs orbital distance."""
     distances = np.linspace(400000, 3000000, 100)  # 400k to 3M km
-    alphas = [predict_moon_resonance_stability(d) for d in distances]
+    # Vectorized computation for better performance
+    L = distances * 1000  # Convert to meters
+    alpha_0 = 0.45
+    L_c = 1e9  # 1 million km in meters
+    alphas = alpha_0 * np.exp(-L/L_c)
     
     plt.figure(figsize=(10, 6))
     plt.plot(distances/1e6, alphas, 'g-', linewidth=2, label='Coupling strength α')
@@ -204,7 +211,11 @@ def plot_moon_predictions():
 def plot_galaxy_predictions():
     """Plot galaxy clustering vs separation scale."""
     separations = np.linspace(1, 300, 100)  # 1 to 300 Mpc
-    alphas = [predict_galaxy_clustering(s) for s in separations]
+    # Vectorized computation for better performance
+    L = separations * 3.086e22  # Convert Mpc to meters
+    alpha_0 = 1.2
+    L_c = 3e23  # 100 Mpc in meters
+    alphas = alpha_0 * np.exp(-L/L_c)
     
     plt.figure(figsize=(10, 6))
     plt.plot(separations, alphas, 'purple', linewidth=2, label='Clustering strength α')

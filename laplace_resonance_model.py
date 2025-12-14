@@ -129,8 +129,8 @@ def calculate_resonance_angle(sol):
     # Calculate resonance angle
     phi_L = 4*theta_ganymede - 2*theta_europa - theta_io
     
-    # Wrap to [-π, π]
-    phi_L = (phi_L + np.pi) % (2*np.pi) - np.pi
+    # Wrap to [-π, π] - optimized using numpy
+    phi_L = np.angle(np.exp(1j * phi_L))
     
     return phi_L
 
