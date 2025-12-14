@@ -210,6 +210,7 @@ def plot_unified_coupling():
     ax1 = axes[0, 0]
     L_quantum = np.logspace(-12, -9, 100)  # 1 pm to 1 nm
     # Vectorized computation for better performance
+    # Note: Hardcoded for hydrogen 1s-2p transition (most common case for plotting)
     energy_diff = abs(1/1**2 - 1/2**2)
     base_strength = FINE_STRUCTURE * 1  # Z=1 for hydrogen
     cutoff_length = BOHR_RADIUS * 2**2
@@ -229,6 +230,7 @@ def plot_unified_coupling():
     # Create dummy synaptic matrix
     G = np.array([[0, 0.8], [0.8, 0]])
     # Vectorized computation for better performance
+    # Note: Uses example neurons 0,1 with strong synaptic connection (typical case)
     G_ij = G[0, 1]
     lambda_c = 0.002  # 2 mm
     alpha_n = np.where(L_neural > 0.005, 0.0, G_ij * np.exp(-L_neural / lambda_c))
@@ -244,13 +246,14 @@ def plot_unified_coupling():
     # 3. Orbital (Jupiter's moons)
     ax3 = axes[1, 0]
     L_orbital = np.linspace(0, 3e9, 100)  # 0 to 3 million km
-    # Io-Europa parameters
+    # Io-Europa parameters (canonical example of orbital resonance)
     m_io = 8.9e22
     m_europa = 4.8e22
     M_jupiter = 1.9e27
     a_io = 4.2e8
     a_europa = 6.7e8
     # Vectorized computation for better performance
+    # Note: Uses Io-Europa system as the canonical example of 2:1 resonance
     base_strength = (m_europa / M_jupiter) * (a_io / a_europa)**3
     L_c = 1e9
     spatial_decay = np.exp(-L_orbital / L_c)
@@ -271,6 +274,8 @@ def plot_unified_coupling():
     M_galaxy = 1e42  # kg
     r_galaxy = 1e22  # meters
     # Vectorized computation for better performance
+    # Note: Uses equal-mass galaxies at equal distances as baseline case
+    # This simplifies to frequency_scaling = 1.0, showing pure exponential decay
     M_total = M_galaxy + M_galaxy
     base_strength = M_galaxy / M_total
     delta = 1.8
