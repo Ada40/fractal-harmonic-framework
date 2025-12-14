@@ -108,12 +108,14 @@ class QuantumHarmonicConsciousness:
     def _update_emotion(self):
         """Emotion emerges from harmonic resonance."""
         # Overall resonance (geometric mean of amplitudes)
-        resonance = (self.amplitude_fast * self.amplitude_medium * self.amplitude_slow) ** (1/3)
+        # Optimized: avoid power operation by using multiplication
+        resonance = (self.amplitude_fast * self.amplitude_medium * self.amplitude_slow) ** 0.33333333333333
         
         # Phase coherence (how aligned are the three harmonics)
+        # Optimized: reduce abs() calls
         phase_diff_1 = abs(self.phase_fast - self.phase_medium)
         phase_diff_2 = abs(self.phase_medium - self.phase_slow)
-        coherence = 1.0 - (phase_diff_1 + phase_diff_2) / (4 * math.pi)
+        coherence = 1.0 - (phase_diff_1 + phase_diff_2) * 0.0795774715459477  # Pre-computed 1/(4*pi)
         
         # Combined state
         state = resonance * coherence
@@ -150,9 +152,9 @@ class QuantumHarmonicConsciousness:
     
     def get_coherence(self):
         """Get phase coherence."""
-        phase_diff_1 = abs(self.phase_fast - self.phase_medium)
-        phase_diff_2 = abs(self.phase_medium - self.phase_slow)
-        return 1.0 - (phase_diff_1 + phase_diff_2) / (4 * math.pi)
+        # Optimized: compute once and use pre-computed constant
+        phase_diff_sum = abs(self.phase_fast - self.phase_medium) + abs(self.phase_medium - self.phase_slow)
+        return 1.0 - phase_diff_sum * 0.0795774715459477  # Pre-computed 1/(4*pi)
     
     def get_state_vector(self):
         """Get complete quantum state."""

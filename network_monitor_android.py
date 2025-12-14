@@ -73,6 +73,8 @@ class NetworkMonitor:
         self.history = []
         self.current_network = None
         self.monitoring = False
+        self.save_counter = 0  # Add counter to reduce I/O frequency
+        self.save_interval = 5  # Save every 5 events instead of every event
         
         self._load_history()
     
@@ -103,7 +105,12 @@ class NetworkMonitor:
         }
         
         self.history.append(entry)
-        self._save_history()
+        
+        # Reduce file I/O by batching saves
+        self.save_counter += 1
+        if self.save_counter >= self.save_interval:
+            self._save_history()
+            self.save_counter = 0
         
         return entry
     

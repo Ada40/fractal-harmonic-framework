@@ -161,8 +161,10 @@ def simulate_brain_fractal(duration=2.0, initial_state=[1.0, 0.5, 0.2], params=N
     """
     if params is None:
         # Default parameters (brain wave frequencies)
+        # Pre-compute pi multiplications for efficiency
+        pi = np.pi
         params = [
-            40*np.pi, 20*np.pi, 10*np.pi,  # γ: Gamma (40Hz), Beta (20Hz), Alpha (10Hz)
+            40*pi, 20*pi, 10*pi,  # γ: Gamma (40Hz), Beta (20Hz), Alpha (10Hz)
             0.5, 0.25,                       # α₁₂, α₁₃: Gamma coupling
             -0.5, 0.25,                      # α₂₁, α₂₃: Beta coupling
             -0.25, -0.25,                    # α₃₁, α₃₂: Alpha coupling
@@ -267,7 +269,8 @@ def calculate_coherence(sol):
         coherence: Array of coherence values
     """
     # Simplified coherence: inverse of amplitude variance
-    variance = np.var([sol.y[0], sol.y[1], sol.y[2]], axis=0)
+    # Optimized: use axis parameter and vectorized operations
+    variance = np.var(sol.y[:3], axis=0)  # Only first 3 rows are amplitudes
     coherence = 1.0 / (1.0 + variance)
     return coherence
 
