@@ -40,7 +40,11 @@ def fractal_noise(n_points, exponent=1.0):
     spectrum[0] = 0  # Remove DC component
     phases = np.random.rand(n_points) * 2*np.pi
     noise = np.fft.ifft(spectrum * np.exp(1j*phases)).real
-    return noise / np.std(noise)  # Normalize
+    # Pre-compute std once instead of recalculating
+    std = np.std(noise)
+    if std > 0:
+        noise = noise / std
+    return noise
 
 
 def fractal_brain(t, A, params):
@@ -59,6 +63,10 @@ def fractal_brain(t, A, params):
     - σ: Stochastic noise amplitudes
     - ξ: White noise (Gaussian random process)
     
+    Note: This function uses random noise which makes it non-deterministic.
+    For reproducible simulations, use fractal_brain_with_noise() with a fixed
+    random seed for noise generation (set np.random.seed() before calling).
+    
     Args:
         t: Time
         A: State vector [A1, A2, A3] (amplitudes of three harmonic layers)
@@ -70,7 +78,7 @@ def fractal_brain(t, A, params):
     A1, A2, A3 = A
     g1, g2, g3, a12, a13, a21, a23, a31, a32, b1, b2, b3, s1, s2, s3 = params
     
-    # Triadic coupled oscillator equations
+    # Triadic coupled oscillator equations (random noise for stochastic behavior)
     dA1 = -g1*A1 + a12*A2 + a13*A3 + b1*A2*A3 + s1*np.random.randn()
     dA2 = -g2*A2 + a21*A1 - a23*A3 + b2*A1*A3 + s2*np.random.randn()
     dA3 = -g3*A3 - a31*A1 - a32*A2 + b3*A1*A2 + s3*np.random.randn()
@@ -78,7 +86,7 @@ def fractal_brain(t, A, params):
     return [dA1, dA2, dA3]
 
 
-def fractal_brain_with_noise(t, A, params, noise1, noise2, noise3):
+def fractal_brain_with_noise(t, A, params, noise1, noise2, noise3, sampling_rate=1000):
     """
     Triadic harmonic brain model with FRACTAL noise (1/f^β scaling).
     
@@ -91,6 +99,7 @@ def fractal_brain_with_noise(t, A, params, noise1, noise2, noise3):
         A: State vector [A1, A2, A3]
         params: Parameter vector
         noise1, noise2, noise3: Pre-generated fractal noise arrays
+        sampling_rate: Sampling rate in Hz (default 1000)
     
     Returns:
         [dA1/dt, dA2/dt, dA3/dt]
@@ -98,8 +107,11 @@ def fractal_brain_with_noise(t, A, params, noise1, noise2, noise3):
     A1, A2, A3 = A
     g1, g2, g3, a12, a13, a21, a23, a31, a32, b1, b2, b3, s1, s2, s3 = params
     
-    # Get fractal noise at this time index (1000 Hz sampling)
-    idx = int(t * 1000) % len(noise1)
+    # Optimized noise indexing: compute once, clamp to bounds
+    idx = int(t * sampling_rate)
+    # Use min() instead of modulo for better performance when in bounds
+    if idx >= len(noise1):
+        idx = idx % len(noise1)
     
     # Triadic coupled oscillator equations with fractal noise
     dA1 = -g1*A1 + a12*A2 + a13*A3 + b1*A2*A3 + s1*noise1[idx]
@@ -177,11 +189,12 @@ def simulate_brain_fractal(duration=2.0, initial_state=[1.0, 0.5, 0.2], params=N
     noise2 = fractal_noise(n_noise, exponent=noise_exponents[1])
     noise3 = fractal_noise(n_noise, exponent=noise_exponents[2])
     
-    # Simulate
+    # Simulate (pass sampling_rate for optimized noise indexing)
+    sampling_rate = 1000
     t_span = [0, duration]
     t_eval = np.linspace(0, duration, n_noise)
     sol = solve_ivp(
-        lambda t, Y: fractal_brain_with_noise(t, Y, params, noise1, noise2, noise3),
+        lambda t, Y: fractal_brain_with_noise(t, Y, params, noise1, noise2, noise3, sampling_rate),
         t_span,
         initial_state,
         t_eval=t_eval,

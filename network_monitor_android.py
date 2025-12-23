@@ -73,6 +73,7 @@ class NetworkMonitor:
         self.history = []
         self.current_network = None
         self.monitoring = False
+        self._unsaved_changes = 0  # Track unsaved changes for batch saving
         
         self._load_history()
     
@@ -85,13 +86,21 @@ class NetworkMonitor:
             except:
                 self.history = []
     
-    def _save_history(self):
-        """Save history to file."""
-        try:
-            with open(self.log_file, 'w') as f:
-                json.dump(self.history[-1000:], f, indent=2)  # Keep last 1000 entries
-        except Exception as e:
-            print(f"Save error: {e}")
+    def _save_history(self, force=False):
+        """
+        Save history to file with batching for efficiency.
+        Only saves every 5 changes unless force=True.
+        """
+        self._unsaved_changes += 1
+        
+        # Batch saves: only write to disk every 5 changes or when forced
+        if force or self._unsaved_changes >= 5:
+            try:
+                with open(self.log_file, 'w') as f:
+                    json.dump(self.history[-1000:], f, indent=2)  # Keep last 1000 entries
+                self._unsaved_changes = 0
+            except Exception as e:
+                print(f"Save error: {e}")
     
     def log_event(self, event_type, details):
         """Log network event."""
@@ -331,8 +340,9 @@ class NetworkMonitorGUI:
                 # Update display
                 self.update_network_info()
                 
-                # Wait 10 seconds
-                for i in range(10):
+                # Sleep with periodic monitoring check for responsive exit
+                # Note: Trades some responsiveness (1s checks vs instant) for reduced CPU usage
+                for _ in range(10):
                     if not self.monitoring:
                         break
                     time.sleep(1)

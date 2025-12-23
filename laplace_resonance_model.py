@@ -126,11 +126,11 @@ def calculate_resonance_angle(sol):
     theta_europa = sol.y[1]
     theta_ganymede = sol.y[2]
     
-    # Calculate resonance angle
+    # Calculate resonance angle (vectorized)
     phi_L = 4*theta_ganymede - 2*theta_europa - theta_io
     
-    # Wrap to [-π, π]
-    phi_L = (phi_L + np.pi) % (2*np.pi) - np.pi
+    # Optimized phase wrapping using numpy (faster than element-wise)
+    phi_L = np.angle(np.exp(1j * phi_L))
     
     return phi_L
 
@@ -172,8 +172,9 @@ def plot_resonance_angle(sol):
     
     fig, ax = plt.subplots(figsize=(12, 6))
     
-    # Downsample for clarity
-    ax.plot(sol.t[::50], phi_L[::50], 'k.', markersize=2, label='φ_L')
+    # More efficient downsampling: use slice step directly
+    step = max(1, len(sol.t) // 2000)  # Target ~2000 points max
+    ax.plot(sol.t[::step], phi_L[::step], 'k.', markersize=2, label='φ_L')
     ax.axhline(0, color='r', linestyle='--', linewidth=2, label='Perfect resonance')
     
     ax.set_title('Resonance Angle φ_L = 4θ_G - 2θ_E - θ_I', fontsize=14, fontweight='bold')
@@ -197,8 +198,8 @@ def plot_phase_space_3d(sol):
     fig = plt.figure(figsize=(10, 8))
     ax = fig.add_subplot(111, projection='3d')
     
-    # Downsample for performance
-    step = 100
+    # Adaptive downsampling based on data size
+    step = max(1, len(sol.t) // 1000)  # Target ~1000 points for 3D plot
     ax.plot(sol.y[0, ::step], sol.y[1, ::step], sol.y[2, ::step],
             linewidth=0.5, alpha=0.7, color='purple')
     ax.scatter(sol.y[0, 0], sol.y[1, 0], sol.y[2, 0],

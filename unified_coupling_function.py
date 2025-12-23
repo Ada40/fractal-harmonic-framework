@@ -45,7 +45,7 @@ def alpha_quantum(n_i, n_j, L, Z=1):
     Args:
         n_i: Principal quantum number of state i
         n_j: Principal quantum number of state j
-        L: Spatial separation (meters)
+        L: Spatial separation (meters) - can be scalar or array
         Z: Atomic number (default 1 = hydrogen)
     
     Returns:
@@ -55,6 +55,9 @@ def alpha_quantum(n_i, n_j, L, Z=1):
         Hydrogen 1s-2p transition:
         α = alpha_quantum(1, 2, 0, Z=1) ≈ 0.0055
     """
+    # Vectorize input for consistency
+    L = np.asarray(L)
+    
     # Energy level difference (Rydberg formula)
     energy_diff = abs(1/n_i**2 - 1/n_j**2)
     
@@ -93,15 +96,15 @@ def alpha_neural(i, j, L, synaptic_matrix, spike_threshold=0.5):
         Two neurons 3mm apart with strong synapse:
         α = alpha_neural(0, 1, 0.003, G) ≈ 0.22
     """
+    # Early exit: hard cutoff beyond cortical column (optimization)
+    if L > 0.005:  # 5 mm
+        return 0.0
+    
     # Synaptic conductance (from Hodgkin-Huxley)
     G_ij = synaptic_matrix[i, j]
     
     # Cortical column cutoff (2-5 mm)
     lambda_c = 0.002  # 2 mm (conservative estimate)
-    
-    # Hard cutoff beyond cortical column
-    if L > 0.005:  # 5 mm
-        return 0.0
     
     # Exponential decay within column
     spatial_decay = np.exp(-L / lambda_c)
@@ -209,7 +212,8 @@ def plot_unified_coupling():
     # 1. Quantum (hydrogen atom)
     ax1 = axes[0, 0]
     L_quantum = np.logspace(-12, -9, 100)  # 1 pm to 1 nm
-    alpha_q = [alpha_quantum(1, 2, L) for L in L_quantum]
+    # Vectorize quantum calculations
+    alpha_q = alpha_quantum(1, 2, L_quantum)
     ax1.loglog(L_quantum * 1e12, alpha_q, 'b-', linewidth=2)
     ax1.axvline(BOHR_RADIUS * 1e12, color='gray', linestyle='--', 
                 label=f'Bohr radius = {BOHR_RADIUS*1e12:.2f} pm')
@@ -224,7 +228,8 @@ def plot_unified_coupling():
     L_neural = np.linspace(0, 0.01, 100)  # 0 to 10 mm
     # Create dummy synaptic matrix
     G = np.array([[0, 0.8], [0.8, 0]])
-    alpha_n = [alpha_neural(0, 1, L, G) for L in L_neural]
+    # Note: List comprehension needed due to matrix indexing in alpha_neural
+    alpha_n = np.array([alpha_neural(0, 1, L, G) for L in L_neural])
     ax2.plot(L_neural * 1000, alpha_n, 'g-', linewidth=2)
     ax2.axvline(2, color='gray', linestyle='--', label='Cortical column = 2 mm')
     ax2.axvline(5, color='red', linestyle='--', label='Hard cutoff = 5 mm')
@@ -234,7 +239,7 @@ def plot_unified_coupling():
     ax2.legend()
     ax2.grid(True, alpha=0.3)
     
-    # 3. Orbital (Jupiter's moons)
+    # 3. Orbital (Jupiter's moons) - use function consistently
     ax3 = axes[1, 0]
     L_orbital = np.linspace(0, 3e9, 100)  # 0 to 3 million km
     # Io-Europa parameters
@@ -243,8 +248,11 @@ def plot_unified_coupling():
     M_jupiter = 1.9e27
     a_io = 4.2e8
     a_europa = 6.7e8
-    alpha_o = [alpha_orbital(m_io, m_europa, M_jupiter, a_io, a_europa, L) 
-               for L in L_orbital]
+    
+    # Note: List comprehension needed due to multiple parameters in alpha_orbital
+    alpha_o = np.array([alpha_orbital(m_io, m_europa, M_jupiter, a_io, a_europa, L) 
+                        for L in L_orbital])
+    
     ax3.plot(L_orbital / 1e6, alpha_o, 'orange', linewidth=2)
     ax3.axvline(1000, color='gray', linestyle='--', label='Resonance zone = 1 Mkm')
     ax3.axhline(0.1, color='red', linestyle='--', label='Stability threshold')
@@ -254,13 +262,16 @@ def plot_unified_coupling():
     ax3.legend()
     ax3.grid(True, alpha=0.3)
     
-    # 4. Galactic (galaxy clusters)
+    # 4. Galactic (galaxy clusters) - use function consistently
     ax4 = axes[1, 1]
     L_galactic = np.linspace(1e22, 5e23, 100)  # 3 to 150 Mpc
     M_galaxy = 1e42  # kg
     r_galaxy = 1e22  # meters
-    alpha_g = [alpha_galactic(M_galaxy, M_galaxy, r_galaxy, r_galaxy, L) 
-               for L in L_galactic]
+    
+    # Note: List comprehension needed due to multiple parameters in alpha_galactic
+    alpha_g = np.array([alpha_galactic(M_galaxy, M_galaxy, r_galaxy, r_galaxy, L) 
+                        for L in L_galactic])
+    
     ax4.plot(L_galactic / 3.086e22, alpha_g, 'purple', linewidth=2)
     ax4.axvline(100, color='gray', linestyle='--', label='Dark energy scale = 100 Mpc')
     ax4.set_xlabel('Separation (Mpc)', fontsize=11)
