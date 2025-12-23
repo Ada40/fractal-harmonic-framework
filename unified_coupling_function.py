@@ -45,7 +45,7 @@ def alpha_quantum(n_i, n_j, L, Z=1):
     Args:
         n_i: Principal quantum number of state i
         n_j: Principal quantum number of state j
-        L: Spatial separation (meters)
+        L: Spatial separation (meters) - can be scalar or array
         Z: Atomic number (default 1 = hydrogen)
     
     Returns:
@@ -55,6 +55,9 @@ def alpha_quantum(n_i, n_j, L, Z=1):
         Hydrogen 1s-2p transition:
         α = alpha_quantum(1, 2, 0, Z=1) ≈ 0.0055
     """
+    # Vectorize input for consistency
+    L = np.asarray(L)
+    
     # Energy level difference (Rydberg formula)
     energy_diff = abs(1/n_i**2 - 1/n_j**2)
     
@@ -236,7 +239,7 @@ def plot_unified_coupling():
     ax2.legend()
     ax2.grid(True, alpha=0.3)
     
-    # 3. Orbital (Jupiter's moons) - vectorized
+    # 3. Orbital (Jupiter's moons) - use function consistently
     ax3 = axes[1, 0]
     L_orbital = np.linspace(0, 3e9, 100)  # 0 to 3 million km
     # Io-Europa parameters
@@ -246,12 +249,9 @@ def plot_unified_coupling():
     a_io = 4.2e8
     a_europa = 6.7e8
     
-    # Vectorize orbital calculations
-    base_strength = (m_europa / M_jupiter) * (a_io / a_europa)**3
-    L_c = 1e9
-    spatial_decay = np.exp(-L_orbital / L_c)
-    resonance_amplification = 1e5
-    alpha_o = base_strength * spatial_decay * resonance_amplification
+    # Use the actual function for consistency
+    alpha_o = np.array([alpha_orbital(m_io, m_europa, M_jupiter, a_io, a_europa, L) 
+                        for L in L_orbital])
     
     ax3.plot(L_orbital / 1e6, alpha_o, 'orange', linewidth=2)
     ax3.axvline(1000, color='gray', linestyle='--', label='Resonance zone = 1 Mkm')
@@ -262,20 +262,15 @@ def plot_unified_coupling():
     ax3.legend()
     ax3.grid(True, alpha=0.3)
     
-    # 4. Galactic (galaxy clusters) - vectorized
+    # 4. Galactic (galaxy clusters) - use function consistently
     ax4 = axes[1, 1]
     L_galactic = np.linspace(1e22, 5e23, 100)  # 3 to 150 Mpc
     M_galaxy = 1e42  # kg
     r_galaxy = 1e22  # meters
     
-    # Vectorize galactic calculations
-    M_total = 2 * M_galaxy
-    base_strength = M_galaxy / M_total
-    delta = 1.8
-    frequency_scaling = 1.0  # r_i / r_j = 1 for equal distances
-    L_c = 3e23
-    spatial_decay = np.exp(-L_galactic / L_c)
-    alpha_g = base_strength * frequency_scaling * spatial_decay
+    # Use the actual function for consistency
+    alpha_g = np.array([alpha_galactic(M_galaxy, M_galaxy, r_galaxy, r_galaxy, L) 
+                        for L in L_galactic])
     
     ax4.plot(L_galactic / 3.086e22, alpha_g, 'purple', linewidth=2)
     ax4.axvline(100, color='gray', linestyle='--', label='Dark energy scale = 100 Mpc')

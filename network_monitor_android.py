@@ -340,8 +340,11 @@ class NetworkMonitorGUI:
                 # Update display
                 self.update_network_info()
                 
-                # Single sleep instead of loop with multiple sleeps (more efficient)
-                time.sleep(10)
+                # Sleep with periodic monitoring check for responsive exit
+                for _ in range(10):
+                    if not self.monitoring:
+                        break
+                    time.sleep(1)
             
             except Exception as e:
                 self.log(f"Error: {e}")

@@ -64,7 +64,8 @@ def fractal_brain(t, A, params):
     - ξ: White noise (Gaussian random process)
     
     Note: This function uses random noise which makes it non-deterministic.
-    For reproducible simulations, use fractal_brain_with_noise() instead.
+    For reproducible simulations, use fractal_brain_with_noise() with a fixed
+    random seed for noise generation (set np.random.seed() before calling).
     
     Args:
         t: Time
