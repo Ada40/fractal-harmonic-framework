@@ -1,0 +1,32 @@
+Educational & Research License (ERL) v1.0
+
+Copyright (c) 2025 Adam Lee Hatchett
+
+Permission is granted, free of charge, to any teacher, instructor, student, educational institution,
+or non-commercial researcher (collectively "Educational Users") to use, reproduce, modify,
+and distribute the materials in this repository for educational and non-commercial research
+purposes, provided that:
+
+1. Attribution
+   - You must give appropriate credit to Adam Lee Hatchett, include a link to the repository,
+     and indicate if changes were made.
+
+2. Permitted uses
+   - Classroom instruction (K–12 and higher education), student projects, classroom demos,
+     non-commercial academic research, and internal educational use are permitted.
+
+3. Prohibited commercial uses
+   - Materials may not be used for commercial purposes, commercial redistribution,
+     inclusion in commercial products, or to provide commercial services without a
+     Commercial License.
+
+4. No warranties
+   - The work is provided "as is", without warranty of any kind.
+
+5. Contributors
+   - Contributions are accepted under the Contributor License Agreement (CLA).
+     Unless the contributor has signed the CLA, the contributor retains copyright and
+     the materials are not automatically covered by the Commercial License.
+
+If you are a company or commercial entity and wish to use the materials for commercial purposes,
+please contact: adamleehatchett@yahoo.com to request a Commercial Annual License.

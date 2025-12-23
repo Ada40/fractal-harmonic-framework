@@ -1,0 +1,34 @@
+Commercial Annual License — summary
+
+Licensor: Adam Lee Hatchett  
+Project: Recursive Fractal Harmonics (Ada40/fractal-harmonic-framework)
+
+Short description
+: Grants a company (Licensee) the right to use, modify, and redistribute the repository materials
+  as part of commercial products or services for a 12-month term under negotiated terms.
+
+Suggested fee schedule (example; negotiable)
+- Micro / Indie (annual revenue < $250k): $250 / year
+- Small (revenue $250k–$2M): $1,000 / year
+- Medium (revenue $2M–$20M): $3,000 / year
+- Enterprise / large redistributions / SaaS: custom pricing (quote on request)
+
+Process
+1. Company emails adamleehatchett@yahoo.com with use case.
+2. Licensor issues a license offer (PDF) and invoice.
+3. Company pays invoice (Stripe / bank transfer / PayPal).
+4. Licensor issues signed license agreement and grant (effective upon payment).
+
+License highlights
+- Duration: 12 months (renewable).
+- Attribution: Licensee must include visible attribution to "Adam Lee Hatchett" in product docs/about page.
+- Redistribution: Permitted per signed agreement.
+- Termination: Breach of terms may result in termination of license rights.
+- Special arrangements: Discounts for educational partners, non-profits, or low-income regions available on request.
+
+Contact
+: adamleehatchett@yahoo.com
+
+Note
+: This file is a summary. A signed commercial license PDF (template available in /licenses/) is required
+for full legal effect.
