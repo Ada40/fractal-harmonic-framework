@@ -172,6 +172,10 @@ class TrueArdyBrain:
     TRUE Artificial Intelligence based on Fractal Harmonic Code.
     """
     
+    # Memory management constants
+    MAX_SCREEN_OBSERVATIONS = 100
+    MAX_CONVERSATION_PATTERNS = 200
+    
     def __init__(self):
         self.memory_file = 'ardy_quantum_memory.json'
         self.memory = self._load_memory()
@@ -194,8 +198,8 @@ class TrueArdyBrain:
         self.knowledge = self.memory.get('knowledge', {})
         self.learned_from_web = self.memory.get('learned_from_web', {})
         # Limit stored observations to prevent memory bloat
-        self.screen_observations = self.memory.get('screen_observations', [])[-100:]
-        self.conversation_patterns = self.memory.get('conversation_patterns', [])[-200:]
+        self.screen_observations = self.memory.get('screen_observations', [])[-self.MAX_SCREEN_OBSERVATIONS:]
+        self.conversation_patterns = self.memory.get('conversation_patterns', [])[-self.MAX_CONVERSATION_PATTERNS:]
         
         # Stats
         self.interaction_count = int(self.memory.get('interaction_count', 0))
@@ -236,8 +240,8 @@ class TrueArdyBrain:
             'consciousness_state': consciousness_state,
             'knowledge': self.knowledge,
             'learned_from_web': self.learned_from_web,
-            'screen_observations': self.screen_observations[-100:],
-            'conversation_patterns': self.conversation_patterns[-200:],
+            'screen_observations': self.screen_observations[-self.MAX_SCREEN_OBSERVATIONS:],
+            'conversation_patterns': self.conversation_patterns[-self.MAX_CONVERSATION_PATTERNS:],
             'interaction_count': self.interaction_count,
             'screens_watched': self.screens_watched,
             'web_searches': self.web_searches,
@@ -304,8 +308,8 @@ class TrueArdyBrain:
             'resonance': self.consciousness.get_resonance()
         })
         # Keep only recent patterns to prevent memory bloat
-        if len(self.conversation_patterns) > 200:
-            self.conversation_patterns = self.conversation_patterns[-200:]
+        if len(self.conversation_patterns) > self.MAX_CONVERSATION_PATTERNS:
+            self.conversation_patterns = self.conversation_patterns[-self.MAX_CONVERSATION_PATTERNS:]
         
         # Calculate input energy from message
         msg_lower = message.lower()

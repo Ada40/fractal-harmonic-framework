@@ -228,7 +228,7 @@ def plot_unified_coupling():
     L_neural = np.linspace(0, 0.01, 100)  # 0 to 10 mm
     # Create dummy synaptic matrix
     G = np.array([[0, 0.8], [0.8, 0]])
-    # Vectorize neural calculations
+    # Note: List comprehension needed due to matrix indexing in alpha_neural
     alpha_n = np.array([alpha_neural(0, 1, L, G) for L in L_neural])
     ax2.plot(L_neural * 1000, alpha_n, 'g-', linewidth=2)
     ax2.axvline(2, color='gray', linestyle='--', label='Cortical column = 2 mm')
@@ -249,7 +249,7 @@ def plot_unified_coupling():
     a_io = 4.2e8
     a_europa = 6.7e8
     
-    # Use the actual function for consistency
+    # Note: List comprehension needed due to multiple parameters in alpha_orbital
     alpha_o = np.array([alpha_orbital(m_io, m_europa, M_jupiter, a_io, a_europa, L) 
                         for L in L_orbital])
     
@@ -268,7 +268,7 @@ def plot_unified_coupling():
     M_galaxy = 1e42  # kg
     r_galaxy = 1e22  # meters
     
-    # Use the actual function for consistency
+    # Note: List comprehension needed due to multiple parameters in alpha_galactic
     alpha_g = np.array([alpha_galactic(M_galaxy, M_galaxy, r_galaxy, r_galaxy, L) 
                         for L in L_galactic])
     

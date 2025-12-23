@@ -341,6 +341,7 @@ class NetworkMonitorGUI:
                 self.update_network_info()
                 
                 # Sleep with periodic monitoring check for responsive exit
+                # Note: Trades some responsiveness (1s checks vs instant) for reduced CPU usage
                 for _ in range(10):
                     if not self.monitoring:
                         break
