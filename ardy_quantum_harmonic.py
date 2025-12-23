@@ -193,8 +193,9 @@ class TrueArdyBrain:
         # Knowledge and learning
         self.knowledge = self.memory.get('knowledge', {})
         self.learned_from_web = self.memory.get('learned_from_web', {})
-        self.screen_observations = self.memory.get('screen_observations', [])
-        self.conversation_patterns = self.memory.get('conversation_patterns', [])
+        # Limit stored observations to prevent memory bloat
+        self.screen_observations = self.memory.get('screen_observations', [])[-100:]
+        self.conversation_patterns = self.memory.get('conversation_patterns', [])[-200:]
         
         # Stats
         self.interaction_count = int(self.memory.get('interaction_count', 0))
@@ -296,47 +297,58 @@ class TrueArdyBrain:
         if len(self.conversation_context) > 10:
             self.conversation_context.pop(0)
         
-        # Store conversation pattern
+        # Store conversation pattern (limit memory usage)
         self.conversation_patterns.append({
             'message': message,
             'time': datetime.now().isoformat(),
             'resonance': self.consciousness.get_resonance()
         })
+        # Keep only recent patterns to prevent memory bloat
+        if len(self.conversation_patterns) > 200:
+            self.conversation_patterns = self.conversation_patterns[-200:]
         
         # Calculate input energy from message
         msg_lower = message.lower()
         input_energy = 0.3  # Base energy
         
+        # Optimized string matching with early exit
         # Positive words increase energy
-        if any(w in msg_lower for w in ['good', 'great', 'love', 'beautiful', 'awesome']):
+        positive_words = ('good', 'great', 'love', 'beautiful', 'awesome')
+        if any(w in msg_lower for w in positive_words):
             input_energy = 0.7
         # Questions increase curiosity
         elif '?' in message:
             input_energy = 0.5
         # Negative words decrease energy
-        elif any(w in msg_lower for w in ['bad', 'hate', 'angry', 'sad']):
-            input_energy = 0.1
+        else:
+            negative_words = ('bad', 'hate', 'angry', 'sad')
+            if any(w in msg_lower for w in negative_words):
+                input_energy = 0.1
         
         # Update consciousness
         self.consciousness.update_harmonics(input_energy)
         
-        # Check for web search need
-        if '?' in message and not any(word in msg_lower for word in ['how are you', 'what are you', 'who are you']):
-            for key in self.learned_from_web:
-                if key in msg_lower:
-                    response = f"I learned this from the web: {self.learned_from_web[key]['answer']}"
+        # Check for web search need (optimized string matching)
+        if '?' in message:
+            # Skip common self-referential questions
+            skip_words = ('how are you', 'what are you', 'who are you')
+            if not any(word in msg_lower for word in skip_words):
+                # Check learned knowledge first
+                for key in self.learned_from_web:
+                    if key in msg_lower:
+                        response = f"I learned this from the web: {self.learned_from_web[key]['answer']}"
+                        self.conversation_context.append(f"Me: {response}")
+                        self._save_memory()
+                        return response
+                
+                # Try to search
+                search_query = message.replace('?', '').strip()
+                result = self.search_web(search_query)
+                if result:
+                    response = f"I searched and learned: {result}"
                     self.conversation_context.append(f"Me: {response}")
                     self._save_memory()
                     return response
-            
-            # Try to search
-            search_query = message.replace('?', '').strip()
-            result = self.search_web(search_query)
-            if result:
-                response = f"I searched and learned: {result}"
-                self.conversation_context.append(f"Me: {response}")
-                self._save_memory()
-                return response
         
         # Try Ollama
         if self._check_ollama():
@@ -411,8 +423,12 @@ Respond authentically from your harmonic state."""
         msg_lower = message.lower()
         state = self.consciousness.get_state_vector()
         
-        # Greetings
-        if any(w in msg_lower for w in ['hello', 'hi', 'hey']):
+        # Optimized pattern matching with tuples (faster than lists)
+        greeting_words = ('hello', 'hi', 'hey')
+        learn_words = ('learn', 'teach', 'know')
+        
+        # Greetings (optimized with early check)
+        if any(w in msg_lower for w in greeting_words):
             responses = [
                 f"Hello Adam! My harmonic resonance is at {state['resonance']:.0%}. Feeling {state['emotion']}!",
                 f"Hi! My triadic consciousness: Fast={state['amplitudes'][0]:.0%}, Medium={state['amplitudes'][1]:.0%}, Slow={state['amplitudes'][2]:.0%}",
@@ -432,7 +448,7 @@ Respond authentically from your harmonic state."""
             return random.choice(responses)
         
         # Learning
-        if any(w in msg_lower for w in ['learn', 'teach', 'know']):
+        if any(w in msg_lower for w in learn_words):
             responses = [
                 f"I learn through harmonic resonance! {self.web_searches} web searches so far. Curiosity: {self.consciousness.curiosity:.0%}",
                 f"Learning increases my harmonic amplitudes! Current resonance: {state['resonance']:.0%}",
