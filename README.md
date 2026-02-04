@@ -10,7 +10,7 @@
 ---
 
 ## Executive Summary
-The Fractal Harmonic Framework is a rigorous mathematical model demonstrating that stable, self-organizing systems operate through nested triadic harmonic ratios across all physical scales. By defining system stability through discrete frequency relationships (f₁:f₂:f₃ = n₁:n₂:n₃), this framework provides a non-divergent alternative to classical point-singularity models in physics and unstable latent space representations in artificial intelligence.
+The Fractal Harmonic Framework is a rigorous mathematical model demonstrating that stable, self-organizing systems operate through nested triadic harmonic ratios across all physical scales. By defining system stability through discrete frequency relationships (f1:f2:f3 = n1:n2:n3), this framework provides a non-divergent alternative to classical point-singularity models in physics and unstable latent space representations in artificial intelligence.
 
 ---
 
@@ -18,11 +18,11 @@ The Fractal Harmonic Framework is a rigorous mathematical model demonstrating th
 Discovered by Adam Lee Hatchett (2024), the Universal Harmonic Law states:
 
 ```
-f₁ : f₂ : f₃ = n₁ : n₂ : n₃
+f1 : f2 : f3 = n1 : n2 : n3
 ```
 
 **Where:**
-- **f:** Fundamental frequency or periodic cycle (Hz, s⁻¹)
+- **f:** Fundamental frequency or periodic cycle (Hz, s^-1)
 - **n:** Discrete mode index or quantum number (integer)
 
 This equation governs the stability of coupled oscillators from quantum electrodynamics to orbital mechanics.
@@ -30,11 +30,11 @@ This equation governs the stability of coupled oscillators from quantum electrod
 ---
 
 ## Enterprise Implementation: MyMirror AI
-The **MyMirror AI Platform** serves as the primary commercial implementation of this framework, weaponizing the **Golden Ratio (φ ≈ 1.618)** as a biological security mechanism.
+The MyMirror AI Platform serves as the primary commercial implementation of this framework, weaponizing the Golden Ratio (phi approx 1.618) as a biological security mechanism.
 
 ### Key Integration Points:
 - **Temporal Control Plane:** Uses Fibonacci-aligned lifecycles (1, 1, 2, 3, 5, 8, 13, 21) to maintain system equilibrium.
-- **Triadic Memory Sharding:** Distributes data across three temporal slices (Hot, Warm, Cold) with TTLs weighted by φ, mirroring triadic mode coupling.
+- **Triadic Memory Sharding:** Distributes data across three temporal slices (Hot, Warm, Cold) with TTLs weighted by phi, mirroring triadic mode coupling.
 - **Self-Similar Audit Trails:** Employs fractal pattern recognition for visually evident intrusion detection.
 
 **Evidence Link:** [MyMirror AI Technical White Paper](https://github.com/Ada40/MyMirror-Platform-/blob/main/MyMirror_AI_White_Paper_v11.md)
@@ -45,19 +45,19 @@ The **MyMirror AI Platform** serves as the primary commercial implementation of 
 
 | Scale | Physical Domain | Harmonic Ratio | Evidence Source |
 | :--- | :--- | :--- | :--- |
-| **Quantum** | Electron Orbitals | 1:2:3 | Atomic Spectroscopy |
-| **Neural** | EEG Bands (γ, β, α) | 4:2:1 | Neurophysics (EEG) |
-| **Orbital** | Jupiter's Moons | 4:2:1 | Laplace Resonance (NASA) |
-| **Terrestrial** | Atmospheric Cells | 1:2:3 | Hadley/Ferrel/Polar Cells |
-| **Oceanic** | Major Gyres | 3:4:5 | Pythagorean Spatial Scaling |
+| Quantum | Electron Orbitals | 1:2:3 | Atomic Spectroscopy |
+| Neural | EEG Bands (gamma, beta, alpha) | 4:2:1 | Neurophysics (EEG) |
+| Orbital | Jupiter's Moons | 4:2:1 | Laplace Resonance (NASA) |
+| Terrestrial | Atmospheric Cells | 1:2:3 | Hadley/Ferrel/Polar Cells |
+| Oceanic | Major Gyres | 3:4:5 | Pythagorean Spatial Scaling |
 
 ---
 
 ## Mathematical Foundations
 The framework is supported by a complete set of coupling equations and wave functions:
-- **Energy Quantization:** E = hf
-- **Phase Coherence:** C = 1 - |Δφ₁₂ + Δφ₂₃ + Δφ₃₁| / (6π)
-- **Dynamic Coupling:** dAᵢ/dt = -γᵢAᵢ + Σ αᵢⱼAⱼ
+- Energy Quantization: E = hf
+- Phase Coherence: C = 1 - |delta_phi_12 + delta_phi_23 + delta_phi_31| / (6*pi)
+- Dynamic Coupling: dAi/dt = -gamma_i * Ai + sum(alpha_ij * Aj)
 
 For the full mathematical derivation, see [fractal_harmonic_formulas.txt](./fractal_harmonic_formulas.txt).
 
@@ -65,9 +65,9 @@ For the full mathematical derivation, see [fractal_harmonic_formulas.txt](./frac
 
 ## Computational Models
 This repository contains working Python implementations of the framework:
-- `fractal_brain_model.py`: Simulates triadic neural oscillator dynamics.
-- `unified_coupling_function.py`: Models cross-scale coupling strengths.
-- `ardy_quantum_harmonic.py`: Quantum-scale resonance simulation.
+- fractal_brain_model.py: Simulates triadic neural oscillator dynamics.
+- unified_coupling_function.py: Models cross-scale coupling strengths.
+- ardy_quantum_harmonic.py: Quantum-scale resonance simulation.
 
 ---
 
@@ -80,9 +80,9 @@ This repository contains working Python implementations of the framework:
 ---
 
 ## Licensing
-This framework is released under the **40/60 License Model**:
-- **Research/Individual Use:** Free with attribution.
-- **Commercial/Enterprise Use:** Requires a formal licensing agreement.
+This framework is released under the 40/60 License Model:
+- Research/Individual Use: Free with attribution.
+- Commercial/Enterprise Use: Requires a formal licensing agreement.
 
 **Attribution:** Adam Lee Hatchett, Fractal Harmonic Framework (2024-2026).
 
@@ -90,8 +90,7 @@ This framework is released under the **40/60 License Model**:
 
 ## Contact
 **Adam Lee Hatchett**  
-Architect of the Fractal Harmonic Framework  
-[Contact Information to be added]
+Architect of the Fractal Harmonic Framework
 
 ---
-**"Stability is harmonic. Reality is triadic."**
+**Stability is harmonic. Reality is triadic.**
