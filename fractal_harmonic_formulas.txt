@@ -1,147 +1,165 @@
-THE FRACTAL HARMONIC CODE - COMPLETE MATHEMATICAL FRAMEWORK
-By Adam Lee Hatchett
-================================================================
+# FRACTAL HARMONIC CODE - TECHNICAL MATHEMATICAL FRAMEWORK
+**Author:** Adam Lee Hatchett  
+**Classification:** Unified Systems Theory  
+**Revision:** v2.0 (Scientific Alignment)
 
-1. FUNDAMENTAL LAW (Triadic Harmonic Ratio)
-================================================================
+---
+
+## 1. FUNDAMENTAL LAW: TRIADIC RESONANCE RATIO
+The core governing principle for multi-scale coupled systems:
+
+```
 f₁ : f₂ : f₃ = n₁ : n₂ : n₃
+```
 
-Where:
-- f = frequency (Hz)
-- n = quantum number (integer)
-- Ratios define harmonic relationships at ALL scales
+**Where:**
+- **f:** Fundamental frequency (Hz)
+- **n:** Integer quantum number or discrete mode index
+- **Ratios:** Define stable harmonic modes across all physical scales.
 
+---
 
-2. ENERGY QUANTIZATION (Planck-inspired)
-================================================================
+## 2. ENERGY QUANTIZATION
+Based on Planck-Einstein relation:
+
+```
 E = hf
+```
 
-Where:
-- E = energy (Joules)
-- h = Planck constant (6.626 × 10⁻³⁴ J·s)
-- f = frequency (Hz)
+**Where:**
+- **E:** Energy (Joules)
+- **h:** Planck constant (6.626 × 10⁻³⁴ J·s)
+- **f:** Frequency (Hz)
 
+---
 
-3. TRIADIC FREQUENCY RELATIONSHIP
-================================================================
-f₁ = k × n₁  (Fast harmony)
-f₂ = k × n₂  (Medium harmony)
-f₃ = k × n₃  (Slow harmony)
+## 3. TRIADIC MODE COUPLING
+System stability is achieved through coupled frequency domains:
 
-Where k = fundamental frequency constant
+```
+f₁ = k × n₁  (High-Frequency Mode)
+f₂ = k × n₂  (Mid-Frequency Mode)
+f₃ = k × n₃  (Low-Frequency Mode)
+```
 
+**Where:**
+- **k:** System-specific fundamental frequency constant.
 
-4. HARMONIC RESONANCE
-================================================================
+---
+
+## 4. SYSTEM RESONANCE (R)
+RMS measure of triadic amplitude alignment:
+
+```
 R = √(A₁² + A₂² + A₃²) / √3
+```
 
-Where:
-- R = resonance (0 to 1)
-- A₁, A₂, A₃ = amplitudes of three harmonic layers
+**Where:**
+- **R:** Resonance coefficient (normalized 0 to 1)
+- **A₁, A₂, A₃:** Amplitudes of the three coupled harmonic layers.
 
+---
 
-5. PHASE COHERENCE
-================================================================
+## 5. PHASE COHERENCE (C)
+Quantifying phase alignment across triadic modes:
+
+```
 C = 1 - |Δφ₁₂ + Δφ₂₃ + Δφ₃₁| / (6π)
+```
 
-Where:
-- C = coherence (0 to 1)
-- Δφᵢⱼ = phase difference between layers i and j
+**Where:**
+- **C:** Coherence index (0 to 1)
+- **Δφᵢⱼ:** Phase difference between coupled modes i and j.
 
+---
 
-6. QUANTUM HARMONIC OSCILLATOR
-================================================================
+## 6. QUANTUM HARMONIC OSCILLATION
+Energy levels of the fundamental system components:
+
+```
 Eₙ = ℏω(n + ½)
+```
 
-Where:
-- ℏ = reduced Planck constant (h/2π)
-- ω = angular frequency (2πf)
-- n = quantum number
+**Where:**
+- **ℏ:** Reduced Planck constant (h/2π)
+- **ω:** Angular frequency (2πf)
+- **n:** Mode index.
 
+---
 
-7. WAVE FUNCTION (Triadic)
-================================================================
+## 7. SYSTEM WAVE FUNCTION (Ψ)
+Superposition of triadic harmonic states:
+
+```
 Ψ(t) = A₁·sin(2πf₁t + φ₁) + A₂·sin(2πf₂t + φ₂) + A₃·sin(2πf₃t + φ₃)
+```
 
-Where:
-- Ψ = total wave function
-- A = amplitude
-- f = frequency
-- φ = phase
-- t = time
+**Where:**
+- **Ψ:** Total system state
+- **A:** Mode amplitude
+- **f:** Mode frequency
+- **φ:** Initial phase
+- **t:** Time.
 
+---
 
-8. FRACTAL SCALING
-================================================================
+## 8. FRACTAL SCALING LAW
+Frequency distribution across hierarchical scales:
+
+```
 fₙ = f₀ × rⁿ
+```
 
-Where:
-- f₀ = base frequency
-- r = scaling ratio
-- n = scale level
+**Where:**
+- **f₀:** Base frequency
+- **r:** Scaling ratio (e.g., Golden Ratio φ ≈ 1.618)
+- **n:** Hierarchical level index.
 
+---
 
-9. CONSCIOUSNESS ENERGY (Total)
-================================================================
+## 9. TOTAL SYSTEM ENERGY (Eₜₒₜₐₗ)
+The sum of quantized energy across coupled modes:
+
+```
 Eₜₒₜₐₗ = E₁ + E₂ + E₃ = h(f₁ + f₂ + f₃)
+```
 
-Where:
-- Eₜₒₜₐₗ = total consciousness energy
-- E₁, E₂, E₃ = energy of each harmonic layer
+**Where:**
+- **Eₜₒₜₐₗ:** Total energy of the triadic system
+- **E₁, E₂, E₃:** Energy contribution of each coupled mode.
 
+---
 
-10. HARMONIC COUPLING (Differential Equations)
-================================================================
+## 10. DYNAMIC COUPLING (DIFFERENTIAL EQUATIONS)
+Time-evolution of mode amplitudes with linear and nonlinear coupling:
+
+```
 dA₁/dt = -γ₁A₁ + α₁₂A₂ + α₁₃A₃
 dA₂/dt = -γ₂A₂ + α₂₁A₁ + α₂₃A₃
 dA₃/dt = -γ₃A₃ + α₃₁A₁ + α₃₂A₂
+```
 
-Where:
-- γ = damping coefficient (energy loss)
-- α = coupling strength (energy transfer between layers)
+**Where:**
+- **γ:** Damping coefficient (energy dissipation rate)
+- **α:** Coupling strength (inter-mode energy transfer).
 
+---
 
-================================================================
-APPLICATIONS
-================================================================
+## APPLICATIONS & EMPIRICAL DOMAINS
 
-1. QUANTUM SYSTEMS
-   - Electron orbitals: n₁:n₂:n₃ quantum numbers
-   - Photon frequencies: E = hf
-   - Quantum entanglement: phase coherence
+1. **QUANTUM ELECTRODYNAMICS:** Electron orbital stabilization and photon frequency quantization.
+2. **ATOMIC SPECTROSCOPY:** Discrete emission lines as harmonic resonance patterns.
+3. **ASTROPHYSICS:** Orbital resonances (e.g., Laplace resonance) and galactic cluster scaling.
+4. **NEUROPHYSICS:** Coupled neural oscillations (Gamma, Beta, Alpha) and cognitive state coherence.
+5. **GEOPHYSICS:** Thermal-fluid dynamics and climate cycle coupling.
 
-2. ATOMIC STRUCTURE
-   - Electron shells: triadic harmonic layers
-   - Atomic spectra: discrete frequency ratios
-   - Chemical bonding: resonance patterns
+---
 
-3. SOLAR SYSTEM
-   - Planetary orbits: harmonic frequency ratios
-   - Solar cycles: coupled oscillations
-   - Gravitational resonance: orbital periods
+## CONCLUSION
+The Fractal Harmonic Code provides a rigorous mathematical framework for understanding cross-scale stability. By defining system behavior through discrete frequency ratios (f₁:f₂:f₃ = n₁:n₂:n₃), we unify disparate physical domains under a single, non-divergent principle of harmonic organization.
 
-4. CONSCIOUSNESS
-   - Neural oscillations: gamma/beta/alpha waves
-   - Cognitive states: resonance patterns
-   - Learning: phase synchronization
+---
 
-5. THERMAL SYSTEMS
-   - Gulf Stream: triadic temperature oscillations
-   - Climate cycles: coupled harmonic modes
-   - Heat transfer: energy quantization
-
-
-================================================================
-FUNDAMENTAL PRINCIPLE
-================================================================
-
-Reality is HARMONIC at ALL scales - from quantum to galactic.
-The same mathematical framework applies universally.
-
-f₁:f₂:f₃ = n₁:n₂:n₃ is the fundamental law of existence.
-
-
-================================================================
-© 2024 Adam Lee Hatchett
-Fractal Harmonic Code Framework
-================================================================
+**© 2025 Adam Lee Hatchett**  
+**Fractal Harmonic Framework**  
+**Timestamped: February 2026**
