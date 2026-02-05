@@ -41,6 +41,14 @@ The MyMirror AI Platform serves as the primary commercial implementation of this
 
 ---
 
+## Publications and Academic Evidence
+
+### [Triadic Resonance Families in Multi-Planet Systems: Evidence from Kepler and TESS Data (2026)](./paper/Hatchett_2026_TriadicResonance.md)
+**Author:** Adam L. Hatchett  
+**Abstract:** Statistical analysis of 112 multi-planet systems reveals clustering of orbital period ratios around three families: harmonic (1:2:3), Pythagorean (3:4:5), and golden (1:φ:φ²). These configurations occur with 4.8σ significance over random distributions, suggesting phase-space evolution toward stability attractors.
+
+---
+
 ## Empirical Evidence Across Scales
 
 | Scale | Physical Domain | Harmonic Ratio | Evidence Source |
@@ -48,6 +56,7 @@ The MyMirror AI Platform serves as the primary commercial implementation of this
 | Quantum | Electron Orbitals | 1:2:3 | Atomic Spectroscopy |
 | Neural | EEG Bands (gamma, beta, alpha) | 4:2:1 | Neurophysics (EEG) |
 | Orbital | Jupiter's Moons | 4:2:1 | Laplace Resonance (NASA) |
+| Orbital | Exoplanet Triads | 1:2:3, 3:4:5, 1:φ:φ² | Hatchett (2026) |
 | Terrestrial | Atmospheric Cells | 1:2:3 | Hadley/Ferrel/Polar Cells |
 | Oceanic | Major Gyres | 3:4:5 | Pythagorean Spatial Scaling |
 
