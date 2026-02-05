@@ -78,6 +78,7 @@ This repository contains working Python implementations of the framework:
 - unified_coupling_function.py: Models cross-scale coupling strengths.
 - ardy_quantum_harmonic.py: Quantum-scale resonance simulation.
 - [triadic_resonance_proof.py](./code/triadic_resonance_proof.py): Reproducible statistical proof using NASA exoplanet data. Includes **predictive logic** for discovering missing planets based on triadic resonance families.
+- [prediction_testing_suite.py](./code/prediction_testing_suite.py): Specific, testable predictions for missing exoplanets in systems like TRAPPIST-1 and Kepler-80 based on triadic resonance.
 
 ---
 
