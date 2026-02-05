@@ -77,7 +77,7 @@ This repository contains working Python implementations of the framework:
 - fractal_brain_model.py: Simulates triadic neural oscillator dynamics.
 - unified_coupling_function.py: Models cross-scale coupling strengths.
 - ardy_quantum_harmonic.py: Quantum-scale resonance simulation.
-- [triadic_resonance_proof.py](./code/triadic_resonance_proof.py): Reproducible statistical proof using NASA exoplanet data.
+- [triadic_resonance_proof.py](./code/triadic_resonance_proof.py): Reproducible statistical proof using NASA exoplanet data. Includes **predictive logic** for discovering missing planets based on triadic resonance families.
 
 ---
 

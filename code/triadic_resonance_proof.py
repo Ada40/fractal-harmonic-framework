@@ -157,7 +157,39 @@ def classify_triad(periods, tolerance=0.15):
     return (best_family, best_error, [r1, r2, r3]) if best_error < tolerance else (None, best_error, [r1, r2, r3])
 
 # ============================================================================
-# 3. STATISTICAL SIGNIFICANCE TEST
+# 3. PREDICT MISSING PLANETS
+# ============================================================================
+
+def predict_missing_planet(periods, target_family='golden'):
+    """
+    Given 2 planets, predict the 3rd for a complete triad.
+    
+    Example: TRAPPIST-1 planets b and c are 1:1.6 (close to golden)
+    Predict planet d: 1.51 * 2.618 = 3.95 days (actual: 4.05 days!)
+    """
+    if len(periods) != 2:
+        return None
+    
+    a, b = sorted(periods)
+    ratio = b/a
+    
+    # Based on which family, predict third period
+    if target_family == 'golden':
+        # If we have position 1 and 2 (1:φ), predict position 3 (φ²)
+        if abs(ratio - 1.618) < 0.2:
+            return a * 2.618
+        # If we have position 2 and 3 (φ:φ²), predict position 1
+        elif abs(ratio - 1.618) < 0.2:
+            return b / 2.618
+    
+    elif target_family == 'harmonic':
+        if abs(ratio - 2.0) < 0.3:
+            return a * 3.0  # Complete 1:2:3
+    
+    return None
+
+# ============================================================================
+# 4. STATISTICAL SIGNIFICANCE TEST
 # ============================================================================
 
 def monte_carlo_test(observed_classifications, n_iterations=100000):
