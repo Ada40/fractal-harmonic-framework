@@ -1,7 +1,29 @@
+# Fractal Harmonic Framework (Ada40)
+
+**Author: Adam Lee Hatchett — Hampton Roads, VA**
+
+**Start here (first page):**
+
+| Document | What it is |
+| :--- | :--- |
+| **[ORIGIN_STORY.md](ORIGIN_STORY.md)** | Full lineage: Rat Trap adaptive switching → harmonic principle → triadic law → vorticity → pressure → Pulse Nine |
+| **[PREDICTIONS_AND_TOYS.md](PREDICTIONS_AND_TOYS.md)** | Pitch candidate (~12.95°), lensing/merger η rule, Bullet-class toys (PASS/FAIL results) |
+
+---
+
+## Quick claims (from the prediction note)
+
+- **Pitch:** ψ = arctan(3 ln φ / 2π) ≈ **12.95°** under φ³-per-turn breathing; 4-arm phase from 12/3 stepping  
+- **Lensing:** n = 1 + ε Ψ_coupled (or Φ_eff ∝ Ψ)  
+- **Bullet-class:** ρ_eff = ρ_star + η ρ_gas — lens tracks stars when η is not too large  
+- **Toys run:** star-anchored PASS · gas-anchored FAIL · 1D η scan breaks near η ~ 2 in that setup  
+
+*Candidate formulas and toys — not peer-validated cosmology.*
+
+---
+
 # Fractal Harmonic Framework
 **A Unified Systems Theory for Multi-Scale Triadic Resonance**
-
-## **Author: Adam Lee Hatchett**
 
 **Framework Origin:** 2024 (Independent Discovery)  
 **Scientific Alignment:** February 2026  
@@ -10,12 +32,12 @@
 ---
 
 ## Executive Summary
-The Fractal Harmonic Framework is a rigorous mathematical model demonstrating that stable, self-organizing systems operate through nested triadic harmonic ratios across all physical scales. By defining system stability through discrete frequency relationships (f1:f2:f3 = n1:n2:n3), this framework provides a non-divergent alternative to classical point-singularity models in physics and unstable latent space representations in artificial intelligence.
+The Fractal Harmonic Framework is a mathematical model exploring stable, self-organizing systems through nested triadic harmonic ratios across scales. System stability is framed through discrete frequency relationships (f1:f2:f3 = n1:n2:n3), as an alternative language for coupled oscillators in physics and for control/memory structure in AI (Pulse Nine / PCI / ADR line).
 
 ---
 
 ## The Fundamental Law: Triadic Resonance
-Discovered by Adam Lee Hatchett (2024), the Universal Harmonic Law states:
+Stated by Adam Lee Hatchett (2024) in this framework:
 
 ```
 f1 : f2 : f3 = n1 : n2 : n3
@@ -25,17 +47,15 @@ f1 : f2 : f3 = n1 : n2 : n3
 - **f:** Fundamental frequency or periodic cycle (Hz, s^-1)
 - **n:** Discrete mode index or quantum number (integer)
 
-This equation governs the stability of coupled oscillators from quantum electrodynamics to orbital mechanics.
-
 ---
 
 ## Enterprise Implementation: MyMirror AI
-The MyMirror AI Platform serves as the primary commercial implementation of this framework, weaponizing the Golden Ratio (phi approx 1.618) as a biological security mechanism.
+The MyMirror AI Platform is presented as a commercial implementation direction of this framework (Golden Ratio / Fibonacci lifecycles, triadic memory ideas).
 
 ### Key Integration Points:
-- **Temporal Control Plane:** Uses Fibonacci-aligned lifecycles (1, 1, 2, 3, 5, 8, 13, 21) to maintain system equilibrium.
-- **Triadic Memory Sharding:** Distributes data across three temporal slices (Hot, Warm, Cold) with TTLs weighted by phi, mirroring triadic mode coupling.
-- **Self-Similar Audit Trails:** Employs fractal pattern recognition for visually evident intrusion detection.
+- **Temporal Control Plane:** Fibonacci-aligned lifecycles (1, 1, 2, 3, 5, 8, 13, 21)
+- **Triadic Memory Sharding:** Hot / Warm / Cold slices
+- **Self-Similar Audit Trails:** Fractal pattern recognition concepts
 
 **Evidence Link:** [MyMirror AI Technical White Paper](https://github.com/Ada40/MyMirror-Platform-/blob/main/MyMirror_AI_White_Paper_v11.md)
 
@@ -45,7 +65,7 @@ The MyMirror AI Platform serves as the primary commercial implementation of this
 
 ### [Triadic Resonance Families in Multi-Planet Systems: Evidence from Kepler and TESS Data (2026)](./paper/Hatchett_2026_TriadicResonance.md)
 **Author:** Adam L. Hatchett  
-**Abstract:** Statistical analysis of 112 multi-planet systems reveals clustering of orbital period ratios around three families: harmonic (1:2:3), Pythagorean (3:4:5), and golden (1:φ:φ²). These configurations occur with 4.8σ significance over random distributions, suggesting phase-space evolution toward stability attractors.
+**Abstract:** Statistical analysis of 112 multi-planet systems reveals clustering of orbital period ratios around three families: harmonic (1:2:3), Pythagorean (3:4:5), and golden (1:φ:φ²).
 
 ---
 
@@ -63,37 +83,34 @@ The MyMirror AI Platform serves as the primary commercial implementation of this
 ---
 
 ## Mathematical Foundations
-The framework is supported by a complete set of coupling equations and wave functions:
 - Energy Quantization: E = hf
 - Phase Coherence: C = 1 - |delta_phi_12 + delta_phi_23 + delta_phi_31| / (6*pi)
 - Dynamic Coupling: dAi/dt = -gamma_i * Ai + sum(alpha_ij * Aj)
 
-For the full mathematical derivation, see [fractal_harmonic_formulas.txt](./fractal_harmonic_formulas.txt).
+Full formulas: [fractal_harmonic_formulas.txt](./fractal_harmonic_formulas.txt)
 
 ---
 
 ## Computational Models
-This repository contains working Python implementations of the framework:
-- fractal_brain_model.py: Simulates triadic neural oscillator dynamics.
-- unified_coupling_function.py: Models cross-scale coupling strengths.
-- ardy_quantum_harmonic.py: Quantum-scale resonance simulation.
-- [triadic_resonance_proof.py](./code/triadic_resonance_proof.py): Reproducible statistical proof using NASA exoplanet data. Includes **predictive logic** for discovering missing planets based on triadic resonance families.
-- [prediction_testing_suite.py](./code/prediction_testing_suite.py): Specific, testable predictions for missing exoplanets in systems like TRAPPIST-1 and Kepler-80 based on triadic resonance.
+- fractal_brain_model.py
+- unified_coupling_function.py
+- ardy_quantum_harmonic.py
+- [triadic_resonance_proof.py](./code/triadic_resonance_proof.py)
+- [prediction_testing_suite.py](./code/prediction_testing_suite.py)
 
 ---
 
 ## Applications
-- **Cybersecurity:** Non-persistent attack surfaces via temporal control planes.
-- **Artificial Intelligence:** Stable transformer architectures with finite-core latent spaces.
-- **Climate Science:** Predictive models for coupled thermal-fluid oscillations.
-- **Structural Engineering:** Resonance-optimized vibration dampening.
+- Cybersecurity temporal control concepts
+- AI control (Pulse Nine / triadic gating / survivor memory)
+- Climate / structural resonance ideas
 
 ---
 
 ## Licensing
-This framework is released under the 40/60 License Model:
-- Research/Individual Use: Free with attribution.
-- Commercial/Enterprise Use: Requires a formal licensing agreement.
+40/60 License Model (see LICENSE files):
+- Research/Individual Use: Free with attribution
+- Commercial/Enterprise Use: Formal licensing agreement
 
 **Attribution:** Adam Lee Hatchett, Fractal Harmonic Framework (2024-2026).
 
@@ -101,7 +118,7 @@ This framework is released under the 40/60 License Model:
 
 ## Contact
 **Adam Lee Hatchett**  
-Architect of the Fractal Harmonic Framework
+Ada40 — Hampton Roads, VA
 
 ---
 **Stability is harmonic. Reality is triadic.**
